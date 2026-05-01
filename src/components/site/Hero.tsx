@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, lazy, Suspense } from "react";
 import { ArrowRight, Sparkles, Play } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import hamadImg from "@/assets/hamad.png";
 
 const HeroScene = lazy(() =>
@@ -108,21 +109,21 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-9 flex flex-wrap items-center gap-3"
           >
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="group inline-flex items-center gap-2 rounded-xl bg-aurora px-5 py-3 text-sm font-semibold text-white transition-all hover:scale-[1.03]"
               style={{ boxShadow: "0 0 30px rgba(37,99,235,0.45)" }}
             >
-              Let's Build Something
+              Hire Me
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-            <a
-              href="#projects"
+            </Link>
+            <Link
+              to="/projects"
               className="group inline-flex items-center gap-2 rounded-xl glass px-5 py-3 text-sm font-semibold text-text-primary transition-all hover:bg-white/[0.06] glow-border"
             >
               <Play className="h-3.5 w-3.5 fill-brand-cyan text-brand-cyan" />
-              Explore My Work
-            </a>
+              View Projects
+            </Link>
           </motion.div>
 
           {/* Stats */}
