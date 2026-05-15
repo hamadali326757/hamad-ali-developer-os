@@ -1,35 +1,40 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Hero } from "@/components/site/Hero";
+import { Hero } from "@/components/sections/Hero";
+import { ProcessSteps } from "@/components/sections/ProcessSteps";
+import { MetricsRow } from "@/components/sections/MetricsRow";
+import { WorkflowDiagram } from "@/components/sections/WorkflowDiagram";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { FAQ } from "@/components/sections/FAQ";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Hamad Ali — Full Stack Developer & AI Automation Engineer" },
+      { title: "GymOS — We build systems that grow gyms." },
       {
         name: "description",
         content:
-          "Full-stack developer & AI automation engineer building SaaS systems, intelligent agents, and 3D web experiences for global teams.",
+          "AI-powered growth infrastructure for independent US gym owners. More memberships, automated lead conversion, retention loops — without adding staff.",
       },
-      { property: "og:title", content: "Hamad Ali — Engineering the future of SaaS" },
-      {
-        property: "og:description",
-        content: "SaaS systems, AI automation, and 3D web experiences engineered for ambitious teams.",
-      },
+      { property: "og:title", content: "GymOS — We build systems that grow gyms." },
+      { property: "og:description", content: "AI growth infrastructure for independent US gyms." },
+      { property: "og:url", content: "/" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
 });
 
 function Index() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <main>
       <Hero />
-    </motion.div>
+      <ProcessSteps />
+      <MetricsRow />
+      <WorkflowDiagram />
+      <Testimonials />
+      <FAQ />
+      <FinalCTA />
+    </main>
   );
 }
