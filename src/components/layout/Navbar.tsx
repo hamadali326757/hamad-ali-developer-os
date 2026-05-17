@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { cn } from "@/lib/utils";
+import veloraLogo from "@/assets/velora-logo.png";
 
 const links = [
   { to: "/services", label: "Services" },
