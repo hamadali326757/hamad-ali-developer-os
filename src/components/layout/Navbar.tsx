@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { cn } from "@/lib/utils";
+import veloraLogo from "@/assets/velora-logo.png";
 
 const links = [
   { to: "/services", label: "Services" },
@@ -30,19 +31,20 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled || open
-          ? "bg-[rgba(11,11,15,0.85)] backdrop-blur-xl border-b border-[var(--border)]"
+          ? "bg-[rgba(11,11,15,0.72)] backdrop-blur-2xl border-b border-[var(--border)] shadow-[0_8px_40px_-12px_rgba(0,0,0,0.6)]"
           : "bg-transparent border-b border-transparent"
       )}
     >
-      <div className="container-wide flex h-[68px] items-center justify-between">
+      <div className="container-wide flex h-[72px] items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group" onClick={() => setOpen(false)}>
-          <span className="grid h-8 w-8 place-items-center rounded-[8px] bg-[var(--accent)] text-[var(--accent-dark)] font-[var(--font-display)] font-bold text-sm">
-            G
+          <span className="relative grid place-items-center">
+            <span className="absolute inset-0 rounded-full bg-[var(--accent)] opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-30" />
+            <img src={veloraLogo} alt="Velora" className="relative h-9 w-9 object-contain" />
           </span>
-          <span className="font-[var(--font-display)] font-bold text-[15px] tracking-tight">
-            GymOS
+          <span className="font-[var(--font-display)] font-bold text-[16px] tracking-[0.02em] bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+            VELORA
           </span>
         </Link>
 
@@ -51,9 +53,12 @@ export function Navbar() {
             <li key={l.to}>
               <Link
                 to={l.to}
-                className="rounded-md px-3 py-2 text-[14px] font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)] data-[status=active]:text-[var(--text-primary)]"
+                className="group relative rounded-md px-3 py-2 text-[14px] font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)] data-[status=active]:text-[var(--text-primary)]"
               >
-                {l.label}
+                <span className="relative">
+                  {l.label}
+                  <span className="pointer-events-none absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-[var(--accent)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:origin-left group-hover:scale-x-100" />
+                </span>
               </Link>
             </li>
           ))}
