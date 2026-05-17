@@ -6,11 +6,12 @@ import { CTAButton } from "@/components/ui/CTAButton";
 import { cn } from "@/lib/utils";
 
 const links = [
+  { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
-  { to: "/ai-systems", label: "AI Systems" },
-  { to: "/case-studies", label: "Case Studies" },
+  { to: "/workflow", label: "Workflow" },
+  { to: "/portfolio", label: "Portfolio" },
   { to: "/about", label: "About" },
-  { to: "/insights", label: "Insights" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function Navbar() {
@@ -33,7 +34,7 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         scrolled || open
           ? "bg-[rgba(11,11,15,0.85)] backdrop-blur-xl border-b border-[var(--border)]"
-          : "bg-transparent border-b border-transparent"
+          : "bg-[rgba(11,11,15,0.55)] backdrop-blur-md border-b border-transparent"
       )}
     >
       <div className="container-wide flex h-[68px] items-center justify-between">
@@ -51,7 +52,8 @@ export function Navbar() {
             <li key={l.to}>
               <Link
                 to={l.to}
-                className="rounded-md px-3 py-2 text-[14px] font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)] data-[status=active]:text-[var(--text-primary)]"
+                activeOptions={{ exact: l.to === "/" }}
+                className="rounded-md px-3 py-2 text-[14px] font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)] data-[status=active]:text-[var(--accent)]"
               >
                 {l.label}
               </Link>
@@ -61,7 +63,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <div className="hidden md:block">
-            <CTAButton to="/contact" size="md">Book free audit</CTAButton>
+            <CTAButton to="/contact" size="md">Book a Call</CTAButton>
           </div>
           <button
             onClick={() => setOpen((v) => !v)}
@@ -87,15 +89,16 @@ export function Navbar() {
                 <li key={l.to}>
                   <Link
                     to={l.to}
+                    activeOptions={{ exact: l.to === "/" }}
                     onClick={() => setOpen(false)}
-                    className="block rounded-md px-3 py-3 text-[14px] font-medium text-[var(--text-secondary)] data-[status=active]:text-[var(--text-primary)]"
+                    className="block rounded-md px-3 py-3 text-[14px] font-medium text-[var(--text-secondary)] data-[status=active]:text-[var(--accent)]"
                   >
                     {l.label}
                   </Link>
                 </li>
               ))}
               <li className="pt-2">
-                <CTAButton to="/contact" fullWidth>Book free audit</CTAButton>
+                <CTAButton to="/contact" fullWidth>Book a Call</CTAButton>
               </li>
             </ul>
           </motion.div>
