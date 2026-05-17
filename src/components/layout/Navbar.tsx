@@ -31,19 +31,20 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled || open
-          ? "bg-[rgba(11,11,15,0.85)] backdrop-blur-xl border-b border-[var(--border)]"
+          ? "bg-[rgba(11,11,15,0.72)] backdrop-blur-2xl border-b border-[var(--border)] shadow-[0_8px_40px_-12px_rgba(0,0,0,0.6)]"
           : "bg-transparent border-b border-transparent"
       )}
     >
-      <div className="container-wide flex h-[68px] items-center justify-between">
+      <div className="container-wide flex h-[72px] items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group" onClick={() => setOpen(false)}>
-          <span className="grid h-8 w-8 place-items-center rounded-[8px] bg-[var(--accent)] text-[var(--accent-dark)] font-[var(--font-display)] font-bold text-sm">
-            G
+          <span className="relative grid place-items-center">
+            <span className="absolute inset-0 rounded-full bg-[var(--accent)] opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-30" />
+            <img src={veloraLogo} alt="Velora" className="relative h-9 w-9 object-contain" />
           </span>
-          <span className="font-[var(--font-display)] font-bold text-[15px] tracking-tight">
-            GymOS
+          <span className="font-[var(--font-display)] font-bold text-[16px] tracking-[0.02em] bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+            VELORA
           </span>
         </Link>
 
