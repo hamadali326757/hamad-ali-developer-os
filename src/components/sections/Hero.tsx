@@ -16,46 +16,9 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 grid-faint opacity-60 [mask-image:radial-gradient(ellipse_at_top,#000_30%,transparent_75%)]" />
-
-      {/* Premium layered glow system */}
-      <motion.div
-        aria-hidden
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute -top-[15%] left-1/2 -translate-x-1/2 h-[820px] w-[1200px] rounded-full pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(182,255,77,0.32) 0%, rgba(182,255,77,0.14) 28%, rgba(182,255,77,0.04) 50%, transparent 72%)",
-          filter: "blur(60px)",
-        }}
-      />
-      <motion.div
-        aria-hidden
-        animate={{ opacity: [0.55, 0.85, 0.55] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[8%] left-1/2 -translate-x-1/2 h-[420px] w-[720px] rounded-full pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(182,255,77,0.45) 0%, transparent 65%)",
-          filter: "blur(80px)",
-        }}
-      />
       <div
-        aria-hidden
-        className="absolute top-[35%] -left-[10%] h-[500px] w-[500px] rounded-full pointer-events-none opacity-40"
-        style={{ background: "radial-gradient(circle, rgba(120,180,255,0.18) 0%, transparent 60%)", filter: "blur(90px)" }}
-      />
-      <div
-        aria-hidden
-        className="absolute top-[20%] -right-[10%] h-[460px] w-[460px] rounded-full pointer-events-none opacity-40"
-        style={{ background: "radial-gradient(circle, rgba(182,255,77,0.16) 0%, transparent 60%)", filter: "blur(90px)" }}
-      />
-      {/* Top horizon line */}
-      <div
-        aria-hidden
-        className="absolute top-0 inset-x-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(182,255,77,0.4), transparent)" }}
+        className="absolute -top-[20%] left-1/2 -translate-x-1/2 h-[600px] w-[900px] rounded-full opacity-[0.07] blur-3xl pointer-events-none"
+        style={{ background: "radial-gradient(circle, var(--accent) 0%, transparent 60%)" }}
       />
       <div className="relative container-wide pt-[120px] pb-24 md:pt-[160px] md:pb-32">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-16 lg:gap-20 items-center">
