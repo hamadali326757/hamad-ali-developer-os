@@ -75,6 +75,7 @@ function RootComponent() {
         </div>
       </AnimatePresence>
       <Footer />
+      <Chatbot />
     </div>
   );
 }
