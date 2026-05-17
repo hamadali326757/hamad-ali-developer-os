@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkflowRouteImport } from './routes/workflow'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
@@ -26,6 +27,11 @@ const WorkflowRoute = WorkflowRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InsightsRoute = InsightsRouteImport.update({
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
+  '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/workflow': typeof WorkflowRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
+  '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/workflow': typeof WorkflowRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
+  '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
   '/workflow': typeof WorkflowRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/insights'
+    | '/portfolio'
     | '/services'
     | '/workflow'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/insights'
+    | '/portfolio'
     | '/services'
     | '/workflow'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/insights'
+    | '/portfolio'
     | '/services'
     | '/workflow'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   CaseStudiesRoute: typeof CaseStudiesRoute
   ContactRoute: typeof ContactRoute
   InsightsRoute: typeof InsightsRoute
+  PortfolioRoute: typeof PortfolioRoute
   ServicesRoute: typeof ServicesRoute
   WorkflowRoute: typeof WorkflowRoute
 }
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/insights': {
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesRoute: CaseStudiesRoute,
   ContactRoute: ContactRoute,
   InsightsRoute: InsightsRoute,
+  PortfolioRoute: PortfolioRoute,
   ServicesRoute: ServicesRoute,
   WorkflowRoute: WorkflowRoute,
 }
